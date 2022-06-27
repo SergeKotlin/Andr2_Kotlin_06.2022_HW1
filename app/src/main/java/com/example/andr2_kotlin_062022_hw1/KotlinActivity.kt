@@ -1,45 +1,37 @@
-package com.example.andr2_kotlin_062022_hw1;
+package com.example.andr2_kotlin_062022_hw1
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.graphics.Color
+import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
-import android.graphics.Color;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
-public class KotlinActivity extends AppCompatActivity {
-    private Button plusBtn;
-    private TextView counterTextView;
-    private int counter = 0;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_counter);
-
-        initViews();
-        setUniqueDecoration();
-
-        plusBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                counter++;
-                updateCounterTextView(counter);
-            }
-        });
+// (Shift, Shift -> enter "kotlin" -> "Convert Java File to Kotlin File")
+class KotlinActivity : AppCompatActivity() {
+    private var plusBtn: Button? = null
+    private var counterTextView: TextView? = null
+    private var counter = 0
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_counter)
+        initViews()
+        setUniqueDecoration()
+        plusBtn!!.setOnClickListener {
+            counter++
+            updateCounterTextView(counter)
+        }
     }
 
-    private void setUniqueDecoration() {
-        counterTextView.setTextColor(Color.BLUE);
+    private fun setUniqueDecoration() {
+        counterTextView!!.setTextColor(Color.BLUE)
     }
 
-    private void updateCounterTextView(int counter) {
-        counterTextView.setText(String.valueOf(counter));
+    private fun updateCounterTextView(counter: Int) {
+        counterTextView!!.text = counter.toString()
     }
 
-    private void initViews() {
-        plusBtn = findViewById(R.id.plus_btn);
-        counterTextView = findViewById(R.id.counter_text_view);
+    private fun initViews() {
+        plusBtn = findViewById(R.id.plus_btn)
+        counterTextView = findViewById(R.id.counter_text_view)
     }
 }
