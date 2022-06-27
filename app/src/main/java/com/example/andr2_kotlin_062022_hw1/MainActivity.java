@@ -2,14 +2,40 @@ package com.example.andr2_kotlin_062022_hw1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    private Button javaBtn;
+    private Button kotlinBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        initViews();
+        setClickListeners();
+    }
+
+    private void setClickListeners() {
+        javaBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, JavaActivity.class);
+            startActivity(intent);
+        });
+
+        kotlinBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, KotlinActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void initViews(){
+        javaBtn = findViewById(R.id.java_btn);
+        kotlinBtn = findViewById(R.id.kotlin_btn);
     }
 }
 
