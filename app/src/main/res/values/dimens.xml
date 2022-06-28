@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="btn_plus">16dp</dimen>
+    <dimen name="counter_text_view">72sp</dimen>
+    <dimen name="java_btn_width">0dp</dimen>
+    <dimen name="kotlin_btn_width">0dp</dimen>
+</resources>
