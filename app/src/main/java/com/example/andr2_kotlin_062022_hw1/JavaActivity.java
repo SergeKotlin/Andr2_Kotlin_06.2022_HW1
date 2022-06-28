@@ -20,14 +20,28 @@ public class JavaActivity extends AppCompatActivity {
 
         initViews();
         setUniqueDecoration();
+        updateCounterTextView(counter);
 
         plusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 counter++;
                 updateCounterTextView(counter);
+                setJavaFail();
             }
         });
+
+        // Потоко-безопасная проверка на Nullable для Java,
+        // Кэшируем проверяемую переменную
+        final Button tmpPlusBtn = plusBtn;
+        if (tmpPlusBtn != null) {
+            tmpPlusBtn.setText("+");
+        }
+    }
+
+    private void initViews() {
+        plusBtn = findViewById(R.id.plus_btn);
+        counterTextView = findViewById(R.id.counter_text_view);
     }
 
     private void setUniqueDecoration() {
@@ -38,8 +52,11 @@ public class JavaActivity extends AppCompatActivity {
         counterTextView.setText(String.valueOf(counter));
     }
 
-    private void initViews() {
-        plusBtn = findViewById(R.id.plus_btn);
-        counterTextView = findViewById(R.id.counter_text_view);
+    private void setJavaFail() {
+        // (It's Joke.. Don't worry)
+        if  (counter > 2 & counter < 5) {
+            final int usageColor = MyClassExternalSingleton.INSTANCE.giveBangColor();
+            counterTextView.setTextColor(usageColor);
+        }
     }
 }
