@@ -34,7 +34,6 @@ class KotlinActivity : AppCompatActivity() { // public по-умолчанию /
             override fun onClick(p0: View) {
                 updateCounterTextView(++counter)
                 setKotlinFail()
-
             }
         })
 
@@ -76,6 +75,19 @@ object MyClassExternalSingleton {
         val usageColor = Color.CYAN
         Log.d("@@@", "Исправлены цвета $usageColor на странице")
         return usageColor
+    }
+
+    const val x = 10 // const - скомпилировано на этапе компиляции, а не выполнения программы
+    val absX = absIf(x.toLong())
+
+    private fun absIf(num: Long) = if (num >= 0) num else { -num }
+
+    private fun absSwitch(num: Long) = when { // Аналог Switch Java
+//      private fun absSwitch(num: Long) = when (num) { // если условие к одной переменной, можно вынести
+//      num in 0..Long.MAX_VALUE -> num // "дорогая конструкция"
+        num >= 0L -> num
+        "".isEmpty() -> num // условия м.б любые
+        else -> -num
     }
 }
 

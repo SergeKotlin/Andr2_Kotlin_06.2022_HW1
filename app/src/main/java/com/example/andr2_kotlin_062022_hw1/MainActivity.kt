@@ -55,6 +55,17 @@ open class MainActivity : AppCompatActivity() {
     companion object Arrays { // статика
         const val sizeArray = 4 // const - скомпилировано на этапе компиляции, а не выполнения программы
         val firstArray = arrayOf(1, 2, 3, 4)
+
+        fun moreCycles(list: List<String>) {
+            // Хорошие варианты
+            list.forEach {
+                Log.d("@@@", it)
+            }
+            for (it in list) {
+                // todo
+            }
+
+        }
     }
 }
 
