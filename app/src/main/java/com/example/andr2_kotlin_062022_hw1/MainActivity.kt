@@ -8,6 +8,7 @@ import android.widget.Button
 
 open class MainActivity : AppCompatActivity() {
     // Все классы по-умолчанию final. Т.о для насладования явно прописывается open
+    // По умолчанию классы наследуются от Any (в Java от Object)
     private var javaBtn: Button? = null
     internal var kotlinBtn: Button? = null // internal - видимость внутри модуля (узко-полезно, при разраб. библиотек)
     private val data = TrainingDataClass().copy()

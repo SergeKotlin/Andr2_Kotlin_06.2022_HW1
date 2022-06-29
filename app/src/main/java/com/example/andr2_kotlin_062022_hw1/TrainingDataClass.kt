@@ -18,3 +18,7 @@ val note = TrainingDataClass(Date(2022, 8, 22), "MAXIMUM")
 val noteList: List<TrainingDataClass> = // хитрость, как сделать Лист изменяемым
     (listOf(note, note.copy(howMuchMoneyWillIEarn = "for start - 1000$")) as MutableList)
 // Все коллекции Kotlin по-умолчанию неизменяемые. Им нужно явно прописывать .toMutableList()
+
+// Функциональное программирование - это удобство. Как переменные и конструкторы рядом.
+val array = arrayOf(1, 2, 3, 4) // Пример
+val filteredArray = array.filter {it == 2} // Список, где каждое значание равно 2

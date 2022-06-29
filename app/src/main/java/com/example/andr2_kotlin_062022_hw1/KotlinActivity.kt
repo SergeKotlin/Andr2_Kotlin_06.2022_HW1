@@ -80,7 +80,13 @@ object MyClassExternalSingleton {
     const val x = 10 // const - скомпилировано на этапе компиляции, а не выполнения программы
     val absX = absIf(x.toLong())
 
-    private fun absIf(num: Long) = if (num >= 0) num else { -num }
+    private fun absIf(num: Long) = if (num >= 0) num else { -num } // типа вместо тернарного оператора (условие ? условие истинно : условие ложно)
+
+    private var someStr: String? = null
+    val lengthElvis = someStr?.length ?: 0 // условие на условие =) "Элвис-оператор"
+    // Т.е (эквивалентная запись):
+    val lengthIf = if (someStr != null) someStr!!.length else 0 //
+
 
     private fun absSwitch(num: Long) = when { // Аналог Switch Java
 //      private fun absSwitch(num: Long) = when (num) { // если условие к одной переменной, можно вынести
@@ -88,7 +94,11 @@ object MyClassExternalSingleton {
         num >= 0L -> num
         "".isEmpty() -> num // условия м.б любые
         else -> -num
+    // else - аналог дефолтной реализации.
+    // И он обязателен, если функция имеет return.
     }
+
+    val enum  = SomeEnum.ONE
 }
 
 class Usage (private val num: Long) : View.OnClickListener {
